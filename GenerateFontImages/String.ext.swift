@@ -9,14 +9,14 @@
 import UIKit
 
 extension String {
-    func boundingRect(with size: CGSize, attributes: [String: Any]? = nil) -> CGRect {
+    func boundingRect(with size: CGSize, attributes: [NSAttributedString.Key: Any]? = nil) -> CGRect {
         let attributedString = NSAttributedString(string: self, attributes: attributes)
         return attributedString.boundingRect(with: size, options: .usesLineFragmentOrigin, context: nil)
     }
     
     
     func boundingRect(with size: CGSize, font: UIFont) -> CGRect {
-        return boundingRect(with: size, attributes: [NSFontAttributeName: font])
+        return boundingRect(with: size, attributes: [.font: font])
     }
 }
 
@@ -35,13 +35,13 @@ extension CGSize {
 // MARK: Draw in center
 
 extension String {
-    func drawCentered(in rect: CGRect, withAttributes attrs: [String : Any]? = nil) {
+    func drawCentered(in rect: CGRect, withAttributes attrs: [NSAttributedString.Key : Any]? = nil) {
         let center = CGPoint(x: rect.midX, y: rect.midY)
         drawCentered(at: center, withAttributes: attrs)
     }
     
     
-    func drawCentered(at point: CGPoint,  withAttributes attrs: [String : Any]? = nil) {
+    func drawCentered(at point: CGPoint,  withAttributes attrs: [NSAttributedString.Key : Any]? = nil) {
         let stringRectSize = self.boundingRect(with: CGSize.infinite, attributes: attrs).size
         let drawingOrigin = CGPoint(x: point.x - stringRectSize.width / 2, y: point.y - stringRectSize.height / 2)
         let drawingRect = CGRect(origin: drawingOrigin, size: stringRectSize)

@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         let documentURL = try! FileManager.default.directoryURL(in: .documentDirectory)
         //clean files
@@ -31,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         readMe += "| Font Family | Font Name | Declaration | Preview |\n"
         readMe += "| --- | --- | --- | --- |\n"
         UIFont.enumerateSystemFonts { (familyName, fontName) in
-            readMe += "| \(familyName) | \(fontName) | `let font = UIFont(name: \"\(fontName)\", size: UIFont.systemFontSize)!` | ![\(fontName)](/Resources/\(fontName).png) |\n"
+            readMe += "| \(familyName) | \(fontName) | `let font = UIFont(name: \"\(fontName)\", size: .systemFontSize)!` | ![\(fontName)](/Resources/\(fontName).png) |\n"
             
             let font = UIFont(name: fontName, size: UIFont.systemFontSize)!
             saveFontSampleImage(font: font, to: resourcesURL)
@@ -62,11 +62,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         context.fill(CGRect(origin: CGPoint.zero, size: CGSize(width: size.width + 1, height: size.height + 1)))
         
         //draw
-        fontName.drawCentered(in: CGRect(origin: CGPoint.zero, size: size), withAttributes: [NSFontAttributeName: font])
+        fontName.drawCentered(in: CGRect(origin: CGPoint.zero, size: size), withAttributes: [.font: font])
         
         //get image
         let image = UIGraphicsGetImageFromCurrentImageContext()!
-        let data = UIImagePNGRepresentation(image)!
+        let data = image.pngData()!
         
         //save image
         let url = destination.appendingPathComponent(fontName + ".png")
