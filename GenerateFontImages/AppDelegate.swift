@@ -48,7 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func saveFontSampleImage(font: UIFont, to destination: URL) {
         let fontName = font.fontName
         let rect = fontName.boundingRect(with: CGSize.infinite, font: font)
-        let size = rect.insetBy(dx: -10, dy: -10).size
+        let size = ceil(rect.insetBy(dx: -10, dy: -10).size)
         
         // prepare context
         UIGraphicsBeginImageContextWithOptions(size, true, 0)
@@ -59,7 +59,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //draw background
         UIColor(red:0.97, green:0.97, blue:0.97, alpha:1.00).setFill()
-        context.fill(CGRect(origin: CGPoint.zero, size: CGSize(width: size.width + 1, height: size.height + 1)))
+        context.fill(CGRect(origin: CGPoint.zero, size: CGSize(width: size.width, height: size.height)))
         
         //draw
         fontName.drawCentered(in: CGRect(origin: CGPoint.zero, size: size), withAttributes: [.font: font])
