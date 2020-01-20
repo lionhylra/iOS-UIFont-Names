@@ -80,6 +80,7 @@
 				B72DBF831E69398300FDF9A6 /* Sources */,
 				B72DBF841E69398300FDF9A6 /* Frameworks */,
 				B72DBF851E69398300FDF9A6 /* Resources */,
+				BE75202D23D5758C00470868 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -136,6 +137,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		BE75202D23D5758C00470868 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = "/bin/sh -l";
+			shellScript = "\"Build Phase/open-document.sh\";\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B72DBF831E69398300FDF9A6 /* Sources */ = {
